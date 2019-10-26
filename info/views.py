@@ -213,7 +213,7 @@ def timetable(request, class_id):
             if j == 0:
                 matrix[i][0] = d[0]
                 continue
-            if j == 4 or j == 8:
+            if j == 3 or j == 6:
                 continue
             try:
                 a = asst.get(period=time_slots[t][0], day=d[0])
@@ -236,7 +236,7 @@ def t_timetable(request, teacher_id):
             if j == 0:
                 class_matrix[i][0] = d[0]
                 continue
-            if j == 4 or j == 8:
+            if j == 3 or j == 6:
                 continue
             try:
                 a = asst.get(period=time_slots[t][0], day=d[0])
