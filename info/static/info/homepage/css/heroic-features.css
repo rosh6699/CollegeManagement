@@ -24,10 +24,13 @@ body {
   margin-bottom: 0px;
   /* background-image: url(../../images/background_jumbo.jpg); */
   /* background: none; */
-  background: rgba(102, 153, 255, 0.5);
+  background: rgba(0, 102, 100, 0.4);
   background-position: 0% 25%;
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
   text-shadow: black 0.3em 0.3em 0.3em;
+  display: flex;
+  justify-content : space-between;
+
 }

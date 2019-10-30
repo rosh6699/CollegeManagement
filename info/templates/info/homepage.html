@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
   <head>
 
     <meta charset="utf-8">
@@ -50,11 +51,42 @@
 
       <!-- Jumbotron Header -->
       <div class="jumbotron ">
-        <h3  >Hi {{ request.user.student.name }}</h3>
-        <p>STUDENT</p>
-        
-{#        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>#}
-{#        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>#}
+         <div>
+              <h3  >Hi {{ request.user.student.name }} </h3>
+              <p>STUDENT</p>
+
+         </div>
+
+
+        <div>
+            {% if request.user.student.prof_image %}
+            <img src="{{ request.user.student.prof_image.url }}" class="img-thumbnail" >
+            {% endif %}
+
+            {% if form %}
+            <form method = "post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+            </form>
+            {% endif %}
+
+
+            <div>
+                {% if not form %}
+        <a class="btn btn-primary" role="button" href="{% url 'image_upload' request.user.student.USN %}"> Edit</a>
+            {% endif %}
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
       </div>
 
       <!-- Page Features -->

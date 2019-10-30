@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save, post_delete
 from datetime import timedelta, date
-
+from PIL import Image
 
 # Create your models here.
 sex_choice = (
@@ -94,6 +94,27 @@ class Student(models.Model):
     name = models.CharField(max_length=200)
     sex = models.CharField(max_length=50, choices=sex_choice, default='Male')
     DOB = models.DateField(default='1998-01-01')
+    prof_image = models.ImageField(upload_to='images/', blank=True,editable=True, default="images/anonym.png")
+
+    image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
+    image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
+
+    def __unicode__(self):
+        return "{0}".format(self.prof_image)
+
+    def save(self):
+        if not self.prof_image:
+            return
+
+        super(Student, self).save()
+        prof_image = Image.open(self.prof_image)
+        (width, height) = prof_image.size
+        size = (130, 130)
+        prof_image = prof_image.resize(size, Image.ANTIALIAS)
+        prof_image.save(self.prof_image.path)
+
+
+
 
     def __str__(self):
         return self.name
@@ -106,6 +127,24 @@ class Teacher(models.Model):
     name = models.CharField(max_length=100)
     sex = models.CharField(max_length=50, choices=sex_choice, default='Male')
     DOB = models.DateField(default='1980-01-01')
+    prof_image = models.ImageField(upload_to='images/', blank=True , editable=True,  default="images/anonym.png")
+
+    image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
+    image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
+
+    def __unicode__(self):
+        return "{0}".format(self.prof_image)
+
+    def save(self):
+        if not self.prof_image:
+            return
+
+        super(Teacher, self).save()
+        prof_image = Image.open(self.prof_image)
+        (width, height) = prof_image.size
+        size = (130, 130)
+        prof_image = prof_image.resize(size, Image.ANTIALIAS)
+        prof_image.save(self.prof_image.path)
 
     def __str__(self):
         return self.name

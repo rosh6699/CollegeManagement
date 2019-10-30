@@ -1,10 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404 ,redirect
 from django.http import HttpResponseRedirect
 from .models import Dept, Class, Student, Attendance, Course, Teacher, Assign, AttendanceTotal, time_slots, DAYS_OF_WEEK, AssignTime, AttendanceClass, StudentCourse, Marks, MarksClass
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+from .forms import *
+from django.http import HttpResponse
 
 
 @login_required
@@ -37,6 +39,22 @@ def attendance_detail(request, stud_id, course_id):
     cr = get_object_or_404(Course, id=course_id)
     att_list = Attendance.objects.filter(course=cr, student=stud).order_by('date')
     return render(request, 'info/att_detail.html', {'att_list': att_list, 'cr': cr})
+
+@login_required()
+def image_upload_view(request,stud_id):
+    if request.method == 'POST':
+        stud = Student.objects.get(USN=stud_id)
+        form = ProfileForm(request.POST or None,request.FILES or None, instance=stud)
+
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = ProfileForm()
+    return render(request, 'info/homepage.html', {'form': form})
+@login_required()
+def success(request):
+    return render(request, 'info/homepage.html' )
 
 
 # def student_search(request, class_id):
@@ -72,6 +90,23 @@ def t_student(request, assign_id):
             a.save()
         att_list.append(a)
     return render(request, 'info/t_students.html', {'att_list': att_list})
+
+@login_required()
+def image_upload_view_t(request,teacher_id):
+    if request.method == 'POST':
+        teach = Teacher.objects.get(id= teacher_id)
+        form = TeacherProfileForm(request.POST or None,request.FILES or None, instance=teach)
+
+        if form.is_valid():
+            form.save()
+            return redirect('success_t')
+    else:
+        form =TeacherProfileForm()
+    return render(request, 'info/t_homepage.html', {'form': form})
+@login_required()
+def success_t(request):
+    return render(request, 'info/t_homepage.html' )
+
 
 
 @login_required()

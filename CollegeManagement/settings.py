@@ -16,6 +16,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+#added_new
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/images/'
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -81,8 +87,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS' : {
-            'read_default_file' : '/etc/mysql/my.cnf'
+            'read_default_file' : '/etc/mysql/my.cnf',
+
+
         },
+        'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
     }
 }
 

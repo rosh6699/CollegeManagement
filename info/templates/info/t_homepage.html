@@ -50,10 +50,34 @@
 
       <!-- Jumbotron Header -->
       <header class="jumbotron ">
-        <h1 >Hi {{ request.user.teacher.name }}</h1>
+
+          <div>
+              <h1 >Hi {{ request.user.teacher.name }}</h1>
         <p>TEACHER</p>
-{#        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>#}
-{#        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>#}
+          </div>
+
+          <div>
+               {% if request.user.teacher.prof_image %}
+            <img src="{{ request.user.teacher.prof_image.url }}" class="img-thumbnail" >
+            {% endif %}
+
+            {% if form %}
+            <form method = "post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+            </form>
+            {% endif %}
+
+
+
+              <div>
+                    {% if not form %}
+            <a class="btn btn-primary" role="button" href="{% url 'image_upload_t' request.user.teacher.id %}"> Edit</a>
+            {% endif %}
+              </div>
+          </div>
+
       </header>
 
       <!-- Page Features -->

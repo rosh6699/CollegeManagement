@@ -1,15 +1,24 @@
 from django.urls import path
 from . import views
-
+from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
+    # path('',image_upload_view,name='image_upload'),
+    path('student/<slug:stud_id>/image_upload/',image_upload_view, name='image_upload'),
+
+    path('', success, name = 'success'),
+    path('', success_t, name = 'success_t'),
+
     path('student/<slug:stud_id>/attendance/', views.attendance, name='attendance'),
     path('student/<slug:stud_id>/<slug:course_id>/attendance/', views.attendance_detail, name='attendance_detail'),
     path('student/<slug:class_id>/timetable/', views.timetable, name='timetable'),
     # path('student/<slug:class_id>/search/', views.student_search, name='student_search'),
 
     path('student/<slug:stud_id>/marks_list/', views.marks_list, name='marks_list'),
+
 
     path('teacher/<slug:teacher_id>/<int:choice>/Classes/', views.t_clas, name='t_clas'),
     path('teacher/<int:assign_id>/Students/attendance/', views.t_student, name='t_student'),
@@ -24,6 +33,7 @@ urlpatterns = [
     path('teacher/<slug:assign_id>/Extra_class/confirm/', views.e_confirm, name='e_confirm'),
     path('teacher/<int:assign_id>/Report/', views.t_report, name='t_report'),
 
+    path('teacher/<slug:teacher_id>/image_upload_t/', image_upload_view_t, name='image_upload_t'),
     path('teacher/<slug:teacher_id>/t_timetable/', views.t_timetable, name='t_timetable'),
     path('teacher/<int:asst_id>/Free_teachers/', views.free_teachers, name='free_teachers'),
 
@@ -33,4 +43,5 @@ urlpatterns = [
     path('teacher/<int:marks_c_id>/marks_entry/confirm/', views.marks_confirm, name='marks_confirm'),
     path('teacher/<int:marks_c_id>/Edit_marks/', views.edit_marks, name='edit_marks'),
 
-]
+] + static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
