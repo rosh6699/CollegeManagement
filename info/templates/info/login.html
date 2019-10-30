@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
   <head>
 
     <meta charset="utf-8">
@@ -8,6 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
+
+    <style>
+      body {
+
+        background-image:url(../../static/info/images/background_login.jpg);
+        background-size : cover;
+      }
+    </style>
 
     <title>Login</title>
 
@@ -24,9 +35,21 @@
 
   </head>
 
-  <body class="bg-dark">
+  <body>
 
-    <div class="container">
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+      <a class="navbar-brand mr-1" href="{% url 'index' %}">College Management</a>
+
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
+
+
+    </nav>
+    <div>
+
+      <div class="container" >
       <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
@@ -40,6 +63,9 @@
       </div>
     </div>
 
+    </div>
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="{% static '/info/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static '/info/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -50,3 +76,5 @@
   </body>
 
 </html>
+
+

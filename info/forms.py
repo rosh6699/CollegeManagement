@@ -3,11 +3,14 @@ from .models import *
 
 
 class ProfileForm(forms.ModelForm):
+
     class Meta:
         model = Student
+
         fields = [
             'prof_image'
         ]
+
 
 class TeacherProfileForm(forms.ModelForm):
     class Meta:
@@ -15,3 +18,6 @@ class TeacherProfileForm(forms.ModelForm):
         fields = [
             'prof_image'
         ]
+
+
+
