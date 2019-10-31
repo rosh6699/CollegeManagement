@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-          <a class="navbar-brand" href="{% url 'index' %} ">College Management</a>
+          <a class="navbar-brand" href="{% url 'index' %} " >College Management</a>
           
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -53,20 +53,23 @@
       <div class="jumbotron ">
          <div>
               <h3  >Hi {{ request.user.student.name }} </h3>
-              <p>STUDENT</p>
+               <h3>{{ request.user.student.USN }}</h3>
+                <h3>STUDENT</h3>
 
          </div>
 
 
+
+
         <div>
             {% if request.user.student.prof_image %}
-            <img src="{{ request.user.student.prof_image.url }}" class="img-thumbnail" >
+            <img src="{{ request.user.student.prof_image.url }}" class="img-thumbnail"  >
             {% endif %}
 
             {% if form %}
             <form method = "post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.as_p}}
                 <button type="submit">Upload</button>
             </form>
             {% endif %}
@@ -95,7 +98,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
               <a href="{% url 'attendance' request.user.student.USN %}">
-                <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" alt="">
+                <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" >
               </a>
               <div class="card-body">
               <h4 class="card-title">Attendance</h4>

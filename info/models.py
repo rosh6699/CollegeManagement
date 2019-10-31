@@ -12,6 +12,7 @@ sex_choice = (
     ('Female', 'Female')
 )
 
+
 time_slots = (
     ('8:00 - 9:00', '8:00 - 9:00'),
     ('9:00 - 10:00', '9:00 - 10:00'),
@@ -96,8 +97,10 @@ class Student(models.Model):
     DOB = models.DateField(default='1998-01-01')
     prof_image = models.ImageField(upload_to='images/', blank=True,editable=True, default="images/anonym.png")
 
-    image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
-    image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
+
+    image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="150")
+    image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="150")
+
 
     def __unicode__(self):
         return "{0}".format(self.prof_image)
@@ -129,8 +132,8 @@ class Teacher(models.Model):
     DOB = models.DateField(default='1980-01-01')
     prof_image = models.ImageField(upload_to='images/', blank=True , editable=True,  default="images/anonym.png")
 
-    image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
-    image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="100")
+    image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="150")
+    image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="150")
 
     def __unicode__(self):
         return "{0}".format(self.prof_image)
