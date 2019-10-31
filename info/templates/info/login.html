@@ -1,80 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+	<title>College Management</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static '/info2/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href= "{% static '/info2/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static '/info2/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static '/info2/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static '/info2/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'info2/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+
+  
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method ="POST">
+          {% csrf_token %}
+         
+					<span class="login100-form-title p-b-43" style="font-family : Montserrat-Bold">
+						College Management
+					</span>
+				  
+          <div class="container-login100-form-btn flex">
+
+            <div>
+              {{form.as_p}}
+            </div>
+            
+            <div class="btn_cont" style="width: 100%" >
+            <button class="login100-form-btn" type = "submit" style ="margin: 0 auto; width:50%; margin-top : 30px" >
+							Login
+						</button>
+            </div>
+          
+          </div>
+
+					
+					
+
+		
+			
+
+					
+					
+					
+				</form>
+
+				<div class="login100-more" style="background-image: url({% static '/info/images/background_login.jpg' %});">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+	
 
 
 
-  <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-
-    <style>
-      body {
-
-        background-image:url(../../static/info/images/background_login.jpg);
-        background-size : cover;
-      }
-    </style>
-
-    <title>Login</title>
-
-      {% load static %}
-
-    <!-- Bootstrap core CSS-->
-    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
-    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template-->
-    <link href="{% static '/info/bootstrap/css/sb-admin.css' %}" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-      <a class="navbar-brand mr-1" href="{% url 'index' %}">College Management</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-
-    </nav>
-    <div>
-
-      <div class="container" >
-      <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
-        <div class="card-body">
-            <form method="post">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button  class="btn btn-success" type="submit">Login</button>
-            </form>
-
-        </div>
-      </div>
-    </div>
-
-    </div>
-
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="{% static '/info/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static '/info/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{% static '/info/bootstrap/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
-  </body>
-
+</body>
 </html>
-
-
