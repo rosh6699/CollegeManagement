@@ -65,6 +65,11 @@
         }
 
 
+        .container2 {
+          display: ;
+          justify-content: center;
+
+        }
 
 
 </style>
@@ -125,11 +130,22 @@
             {% if form %}
             <form method = "post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <label for="{{ProfileForm.prof_image}}"></label>
-                <input id="prof_image" type="file"  name="prof_image" value=""></input>
+                <div class="container2">
+                  <div class="">
+                    <label for="{{ProfileForm.prof_image}}"></label>
+                    <input class="" id="prof_image" type="file"  name="prof_image" value=""></input>
+                  </div>
 
-                <!-- {{ form.as_p}} -->
-                <button type="submit">Upload</button>
+                  <div class="">
+                    <button class=" btn btn-primary "type="submit" style="height:30px; padding-top:5px;margin-top:5px;">Upload</button>
+
+                  </div>
+
+
+                  <!-- {{ form.as_p}} -->
+
+                </div>
+
             </form>
             {% endif %}
 
@@ -160,10 +176,10 @@
   </section> -->
 
   <!-- Projects Section -->
-  <div style="background-color:#aba99f;">
+  <div style="background-color:#dedcd1;">
 
 
-<section id="projects" class="projects-section bg-light" >
+<section id="projects" class= >
   <div class="container">
   <!-- <div class="jumbotron jumbotron-fluid"> -->
     <div class="row text-center">
@@ -189,8 +205,10 @@
               <img class="card-img-top " src="{% static 'info/images/marks.jpg' %}" alt="">
             </a>
             <div class="card-body">
+
             <h4 class="card-title">Marks</h4>
-            <p class="card-text">View the marks obtained for each of your courses. </p>
+
+            <p class="card-text" style="margin-bottom: 14px">View the marks obtained for each of your courses. </p>
           </div>
           <div class="card-footer">
               <a class="btn btn-primary" role="button" href="{% url 'marks_list' request.user.student.USN %}">View Marks</a>
@@ -234,7 +252,7 @@
 
 
   <!-- Footer -->
-  <footer class="bg-black small text-center text-white-50">
+  <footer class=" small text-center text-white-50" style="background: #f7f7f7">
     <div class="container">
 
     </div>

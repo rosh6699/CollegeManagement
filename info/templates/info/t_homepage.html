@@ -1,89 +1,178 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>homepage</title>
-      {% load static %}
+  <title>College Management</title>
 
-    <!-- Bootstrap core CSS -->
-      <link href="{% static '/info/homepage/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'info3/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'info3/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'info3/css/grayscale.min.css' %}" rel="stylesheet">
+
+</head>
+<style>
+
+        .caption div {
+        box-shadow: 0 0 5px #C8C8C8;
+        transition: all 0.3s ease 0s;
+        }
+        .img-circle {
+        border-radius: 25%;
+        padding: 10px;
+        }
+        .img-circle {
+        border-radius: 10px;
+        }
+
+        .ratio {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        height: 0;
+        padding-bottom: 100%;
+        position: relative;
+        width: 100%;
+        }
+        .img-circle {
+        border-radius: 50%;
+        }
+        .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+        }
+
+        .border {   border-width: 25px;   border-color: white;   border-style: solid;}
+        .solid {   border-style: solid; }
+
+        .text-details {
+          color: white;
+          font-family: Poppins-Black;
+        }
 
 
-    <!-- Custom styles for this template -->
-      <link href="{% static '/info/homepage/css/heroic-features.css' %}" rel="stylesheet">
-          <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        .container2 {
+          display: ;
+          justify-content: center;
+
+        }
 
 
+</style>
 
-  </head>
 
-  <body>
+<body id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}">College Management</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link text-capitalize">{{ request.user.teacher.name }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-            </li>
-          </ul>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">College Management</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger">{{ request.user.teacher.name }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/accounts/logout">Logout</a>
         </div>
       </div>
-    </nav>
+    </div>
+  </div>
 
-    <!-- Page Content -->
-    <div class="container">
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <div>
+             {% if request.user.teacher.prof_image %}
+          <img src="{{ request.user.teacher.prof_image.url }}" class="img-circle border solid" style="width: 225px;" >
+          {% endif %}
 
-      <!-- Jumbotron Header -->
-      <header class="jumbotron ">
-
-          <div>
-              <h1 >Hi {{ request.user.teacher.name }}</h1>
-              <h3> TEACHER</h3>
-
-          </div>
-
-
-
-          <div>
-               {% if request.user.teacher.prof_image %}
-            <img src="{{ request.user.teacher.prof_image.url }}" class="img-thumbnail" >
-            {% endif %}
-
-            {% if form %}
-            <form method = "post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Upload</button>
-            </form>
-            {% endif %}
-
-
-
-              <div>
-                    {% if not form %}
-            <a class="btn btn-primary" role="button" href="{% url 'image_upload_t' request.user.teacher.id %}"> Edit</a>
-            {% endif %}
+          {% if form %}
+          <form method = "post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container2">
+              <div class="">
+                <label for="{{ProfileForm.prof_image}}"></label>
+                <input class="" id="prof_image" type="file"  name="prof_image" value=""></input>
               </div>
-          </div>
 
-      </header>
+              <div class="">
+                <button class=" btn btn-primary "type="submit" style="height:30px; padding-top:5px;margin-top:5px;">Upload</button>
 
-      <!-- Page Features -->
+              </div>
+              <!-- {{ form.as_p}} -->
+            </div>
+          </form>
+          {% endif %}
+            <div>
+                  {% if not form %}
+                  <br>
+          <a class="btn btn-secondary" role="button" href="{% url 'image_upload_t' request.user.teacher.id %}" style="height:30px; text-align : center;padding-top:5px"> Edit</a>
+          {% endif %}
+            </div>
+            <br>
+            <div class="text-details">
+                 <h3  >{{ request.user.teacher.name }} </h3>
+                  <h3>{{ request.user.teacher.USN }}</h3>
+                   <h3> TEACHER</h3>
+
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <!-- <section id="about" class="about-section text-center">
+
+  </section> -->
+
+  <!-- Projects Section -->
+  <div style="background-color:#dedcd1;">
+  <section id="projects" style="padding-top:2rem">
+
+    <!-- Page Features -->
+    <div class="container">
       <div class="row text-center">
 
         <div class="col-lg-3 col-md-6 mb-4">
@@ -93,10 +182,10 @@
               </a>
               <div class="card-body">
               <h4 class="card-title">Attendance</h4>
-              <p class="card-text">Enter the attendance of the students based on the class they are in. .</p>
+              <p class="card-text" style="margin-bottom: 20px">Enter the attendance of the students based on the class they are in. .</p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" role="button" href="{% url 't_clas' request.user.teacher.id 1 %}"> Enter Attendance</a>
+                <a class="btn btn-primary" role="button" href="{% url 't_clas' request.user.teacher.id 1 %}" style="padding:1.3rem"> Enter Attendance</a>
             </div>
           </div>
         </div>
@@ -108,10 +197,10 @@
               </a>
               <div class="card-body">
               <h4 class="card-title">Marks</h4>
-              <p class="card-text">Enter the marks of the students based on the class they are in.</p>
+              <p class="card-text" style="margin-bottom: 30px">Enter the marks of the students based on the class they are in.</p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" role="button" href="{% url 't_clas' request.user.teacher.id 2 %}">Enter Marks</a>
+                <a class="btn btn-primary" role="button" href="{% url 't_clas' request.user.teacher.id 2 %}"  style="padding: 1.9rem" >Enter Marks</a>
             </div>
           </div>
         </div>
@@ -123,10 +212,10 @@
               </a>
               <div class="card-body">
               <h4 class="card-title">TimeTable</h4>
-              <p class="card-text">View the timetable in a tabular form. </p>
+              <p class="card-text" style="margin-bottom: 30px">View the timetable in a tabular form. </p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-primary" role="button" href="{% url 't_timetable' request.user.teacher.id %}">View TimeTable</a>
+                <a class="btn btn-primary" role="button" href="{% url 't_timetable' request.user.teacher.id %}" style="padding: 1.9rem">View TimeTable</a>
             </div>
           </div>
         </div>
@@ -147,35 +236,35 @@
         </div>
 
       </div>
-      <!-- /.row -->
-
     </div>
-    <!-- /.container -->
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="/accounts/logout">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- /.row -->
 
-    <!-- Bootstrap core JavaScript -->
+  </section>
+  </div>
+  <!-- Signup Section -->
+  <!-- <section id="signup" class="signup-section">
+      </section> -->
 
+  <!-- Contact Section -->
+  <!-- <section class="contact-section bg-black">
 
-      <script src="{% static '/info/homepage/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static '/info/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </section> -->
 
-  </body>
+  <!-- Footer -->
+  <footer class="small text-center text-white-50" style="background: #f7f7f7">
+
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'info3/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'info3/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'info3/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'info3/js/grayscale.min.js' %}"></script>
+
+</body>
 
 </html>
