@@ -34,17 +34,37 @@
 						College Management
 					</span>
 				  
-          <div class="container-login100-form-btn flex">
+          <div class="container-login100-form-btn">
 
-            <div>
+            {% comment %} <div class="wrap-input100">
+              
               {{form.as_p}}
-            </div>
+              <p><label for="id_username">Username:</label> <input type="text" name="username" autofocus="" required="" id="id_username"></p>
+              <p><label for="id_password">Password:</label> <input type="password" name="password" required="" id="id_password"></p>
             
-            <div class="btn_cont" style="width: 100%" >
-            <button class="login100-form-btn" type = "submit" style ="margin: 0 auto; width:50%; margin-top : 30px" >
+
+            </div> {% endcomment %}
+
+            <div class="wrap-input100 validate-input" >
+            
+						<input type="text" class="input100" name="username" autofocus required="" id="id_username">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Username</span>
+					  </div>
+					
+					
+					  <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <input type="password" class="input100" name="password" required="" id="id_password">					
+            	<span class="focus-input100"></span>
+						<span class="label-input100">Password</span>
+					  </div>
+            
+           
+            <div class="container-login100-form-btn">
+						<button class="login100-form-btn">
 							Login
 						</button>
-            </div>
+					</div>
           
           </div>
 
@@ -69,8 +89,10 @@
 
 	
 	
-
+  <script src="{% static '/info2/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static '/info2/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 
 
 </body>
+
 </html>
