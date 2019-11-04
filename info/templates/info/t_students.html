@@ -11,7 +11,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th>USN</th>
+                        <th>Roll No</th>
                         <th>Student name</th>
                         <th>Attended classes</th>
                         <th>Total classes</th>
@@ -26,7 +26,7 @@
                         <td><a href="{% url 't_attendance_detail' a.student.USN a.course_id %}">{{ a.student.name }}</a></td>
                         <td>{{ a.att_class }}</td>
                         <td>{{ a.total_class }}</td>
-                        {% if a.attendance < 75 %}
+                        {% if a.attendance < 80 %}
                             <td class="p-3 mb-2 bg-danger text-white">{{ a.attendance }}</td>
                         {% else %}
                             <td class="p-3 mb-2 bg-success text-white">{{ a.attendance }}</td>

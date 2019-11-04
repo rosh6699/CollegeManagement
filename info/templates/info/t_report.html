@@ -14,22 +14,42 @@
                         <th style="width: 25%">Student USN</th>
                         <th style="width: 25%">Student Name</th>
                         <th style="width: 25%">Attendance</th>
-                        <th style="width: 25%">CIE</th>
+                        <th style="width: 25%">Total Marks</th>
+                        <th style="width: 25%">Grade</th>
                   </thead>
                   <tbody>
                     {% for sc in sc_list %}
                     <tr>
                         <td>{{ sc.student_id }}</td>
                         <td>{{ sc.student.name }}</td>
-                        {% if sc.get_attendance < 75 %}
+                        {% if sc.get_attendance < 80 %}
                             <td class="p-3 mb-2 bg-danger text-white">{{ sc.get_attendance }}</td>
                         {% else %}
                             <td class="p-3 mb-2 bg-success text-white">{{ sc.get_attendance }}</td>
                         {% endif %}
-                        {% if sc.get_cie < 25 %}
+                        {% if sc.get_cie < 35 %}
                             <td class="p-3 mb-2 bg-danger text-white">{{ sc.get_cie }}</td>
                         {% else %}
                             <td class="p-3 mb-2 bg-success text-white">{{ sc.get_cie }}</td>
+                        {% endif %}
+                        {% if sc.get_attendance < 80 %}
+                            <td class="p-3 mb-2 bg-danger text-white">W</td>
+                        {% elif sc.get_cie < 35 %}
+                            <td class="p-3 mb-2 bg-danger text-white">F</td>
+                        {% elif sc.get_cie < 45 %}
+                            <td class="p-3 mb-2 bg-warning text-white">R</td>
+                        {% elif sc.get_cie < 55 %}
+                            <td class="p-3 mb-2 bg-warning text-white">E</td>
+                        {% elif sc.get_cie < 65 %}
+                            <td class="p-3 mb-2 bg-info text-white">D</td>
+                        {% elif sc.get_cie < 75 %}
+                            <td class="p-3 mb-2 bg-info text-white">C</td>
+                        {% elif sc.get_cie < 85 %}
+                            <td class="p-3 mb-2 bg-info text-white">B</td>
+                        {% elif sc.get_cie < 95 %}
+                            <td class="p-3 mb-2 bg-success text-white">A</td>
+                        {% else %}
+                            <td class="p-3 mb-2 bg-success text-white">S</td>
                         {% endif %}
                     </tr>
                     {% empty %}

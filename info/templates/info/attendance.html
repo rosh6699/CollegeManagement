@@ -26,7 +26,7 @@
                         <td><a href="{% url 'attendance_detail' a.student.USN a.course.id %}">{{a.course.name}}</a></td>
                         <td>{{ a.att_class }}</td>
                         <td>{{ a.total_class }}</td>
-                        {% if a.attendance < 75 %}
+                        {% if a.attendance < 80 %}
                             <td class="p-3 mb-2 bg-danger text-white">{{ a.attendance }}</td>
                         {% else %}
                             <td class="p-3 mb-2 bg-success text-white">{{ a.attendance }}</td>
