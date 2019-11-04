@@ -1,98 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>College Management</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% load static %}
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{% static '/info2/images/icons/favicon.ico' %}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{% static '/info2/vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static '/info2/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static '/info2/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
-<!--===============================================================================================-->
-	
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static '/info2/css/util.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'info2/css/main.css' %}">
-<!--===============================================================================================-->
-</head>
-<body style="background-color: #123456;">
 
-  
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" method ="POST">
-          {% csrf_token %}
-         
-					<span class="login100-form-title p-b-43" style="font-family : Montserrat-Bold">
-						College Management
-					</span>
-				  
-          <div class="container-login100-form-btn">
+  <head>
 
-            {% comment %} <div class="wrap-input100">
-              
-              {{form.as_p}}
-              <p><label for="id_username">Username:</label> <input type="text" name="username" autofocus="" required="" id="id_username"></p>
-              <p><label for="id_password">Password:</label> <input type="password" name="password" required="" id="id_password"></p>
-            
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-            </div> {% endcomment %}
+    <title>Login</title>
 
-            <div class="wrap-input100 validate-input" >
-            
-						<input type="text" class="input100" name="username" autofocus required="" id="id_username">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Username</span>
-					  </div>
-					
-					
-					  <div class="wrap-input100 validate-input" data-validate="Password is required">
-            <input type="password" class="input100" name="password" required="" id="id_password">					
-            	<span class="focus-input100"></span>
-						<span class="label-input100">Password</span>
-					  </div>
-            
-           
-            <div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-          
-          </div>
+      {% load static %}
 
-					
-					
+    <!-- Bootstrap core CSS-->
+    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-		
-			
+    <!-- Custom fonts for this template-->
+    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-					
-					
-					
-				</form>
+    <!-- Custom styles for this template-->
+    <link href="{% static '/info/bootstrap/css/sb-admin.css' %}" rel="stylesheet">
 
-				<div class="login100-more" style="background-image: url({% static '/info/images/background_login.jpg' %});">
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	
+  </head>
 
-	
-	
-  <script src="{% static '/info2/vendor/bootstrap/js/popper.js' %}"></script>
-	<script src="{% static '/info2/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <body class="bg-dark">
 
+    <div class="container">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button  class="btn btn-success" type="submit">Login</button>
+            </form>
 
-</body>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  </body>
 
 </html>
