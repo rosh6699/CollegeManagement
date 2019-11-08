@@ -12,15 +12,17 @@
   <title>College Management</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="{% static 'info3/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href= "{% static '/info5/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static '/info5/bootstrap/css/grayscale.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'info3/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> -->
 
   <!-- Custom fonts for this template -->
-  <link href="{% static 'info3/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- <link href="{% static 'info3/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
 
   <!-- Custom styles for this template -->
-  <link href="{% static 'info3/css/grayscale.min.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'info3/css/grayscale.min.css' %}" rel="stylesheet"> -->
 
 </head>
 <style>
@@ -178,7 +180,7 @@
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
               <a href="{% url 't_clas' request.user.teacher.id 1 %}">
-                <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" alt="">
+                <img class="card-img-top" src="{% static 'info5/images/attendance2.jpg' %}" alt="">
               </a>
               <div class="card-body">
               <h4 class="card-title">Attendance</h4>
@@ -193,7 +195,7 @@
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
               <a href="{% url 't_clas' request.user.teacher.id 2 %}">
-                <img class="card-img-top" src="{% static 'info/images/marks.jpg' %}" alt="">
+                <img class="card-img-top" src="{% static 'info5/images/marks.jpg' %}" alt="">
               </a>
               <div class="card-body">
               <h4 class="card-title">Marks</h4>
@@ -208,7 +210,7 @@
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
               <a href="{% url 't_timetable' request.user.teacher.id %}">
-                <img class="card-img-top" src="{% static 'info/images/timetable.png' %}" alt="">
+                <img class="card-img-top" src="{% static 'info5/images/timetable.png' %}" alt="">
               </a>
               <div class="card-body">
               <h4 class="card-title">TimeTable</h4>
@@ -223,7 +225,7 @@
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
             <a href="{% url 't_clas' request.user.teacher.id 3 %}">
-                <img class="card-img-top" src="{% static 'info/images/reports.png' %}" alt="">
+                <img class="card-img-top" src="{% static 'info5/images/reports.png' %}" alt="">
             </a>
             <div class="card-body">
               <h4 class="card-title">Reports</h4>
@@ -256,14 +258,16 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'info3/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'info3/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <script src="{% static '/info5/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{%static '/info5/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="{% static 'info3/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static '/info5/bootstrap/vendor/jquery-easing/jquery.easing.min.js'%}"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="{% static 'info3/js/grayscale.min.js' %}"></script>
+  <script src="{% static '/info5/bootstrap/js/grayscale.min.js'%}  "></script>
+
 
 </body>
 
