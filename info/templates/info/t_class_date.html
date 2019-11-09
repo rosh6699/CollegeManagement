@@ -28,11 +28,14 @@
 
                         {% elif a.status == 1 %}
                             <td class="p-3 mb-2 bg-success text-white">Marked</td>
-                            <td><a class="btn btn-secondary" href="{% url 'edit_att' a.id %}" role="button">Edit Attendance</a> </td>
+                            <td>
+                              <a class="btn btn-secondary" href="{% url 'edit_att' a.id %}" role="button">Edit Attendance</a>
+                              <a class="btn btn-warning" href="{% url 'cancel_class' a.id %}">Cancel Class</>
+                            </td>
 
                         {% else %}
                             <td class="p-3 mb-2 bg-warning text-white">Cancelled</td>
-                            <td><a class="btn btn-primary" href="{% url 't_attendance' a.id %}" role="button">Enter Attendance</a></td>
+                            <td><a class="btn btn-primary" href="{% url 'undo_cancel' a.id %}" role="button">Undo Cancel</a></td>
                         {% endif %}
                     </tr>
                     {% empty %}

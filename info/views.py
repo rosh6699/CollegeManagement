@@ -109,6 +109,12 @@ def success_t(request):
     return render(request, 'info/t_homepage.html' )
 
 
+@login_required
+def undo_cancel(request, ass_c_id):
+    assc = AttendanceClass.objects.raw("SELECT * FROM info_attendanceclass WHERE id = %s", [ass_c_id])[0]
+    sqlexec("UPDATE info_attendanceclass SET status= 0 WHERE id= %s", [ass_c_id])
+    return HttpResponseRedirect(reverse('t_class_date', args=(assc.assign_id,)))
+
 
 @login_required()
 def t_class_date(request, assign_id):
@@ -123,6 +129,15 @@ def cancel_class(request, ass_c_id):
     assc = AttendanceClass.objects.raw("SELECT * FROM info_attendanceclass WHERE id = %s", [ass_c_id])[0]
     #assc.status = 2
     #assc.save()
+
+    if assc.status == 1:
+        ass = assc.assign
+        cr = ass.course
+        cl = ass.class_id
+        for i, s in enumerate(cl.student_set.all()):
+            a = Attendance.objects.get(course=cr, student=s, date=assc.date, attendanceclass=assc)
+            sqlexec("DELETE FROM info_attendance WHERE id= %s", [a.id])
+
     sqlexec("UPDATE info_attendanceclass SET status= 2 WHERE id= %s", [ass_c_id])
     return HttpResponseRedirect(reverse('t_class_date', args=(assc.assign_id,)))
 
@@ -244,9 +259,9 @@ def t_report(request, assign_id):
 
 @login_required()
 def timetable(request, class_id):
-    
+
     asst = AssignTime.objects.raw("SELECT * FROM info_assigntime WHERE EXISTS (SELECT * FROM info_assign WHERE info_assign.id = assign_id AND class_id_id = %s)", [class_id])
-    
+
     matrix = [['' for i in range(12)] for j in range(5)]
 
     for i, d in enumerate(DAYS_OF_WEEK):
@@ -261,7 +276,7 @@ def timetable(request, class_id):
                 #a = asst.get(period=time_slots[t][0], day=d[0])
                 for a in asst:
                     if a.period == time_slots[t][0] and a.day ==d[0]:
-                        class_matrix[i][j] = a.assign.course_id
+                        matrix[i][j] = a.assign.course_id
                         break
                 #matrix[i][j] = a.assign.course_id
             except AssignTime.DoesNotExist:
@@ -275,7 +290,7 @@ def timetable(request, class_id):
 @login_required()
 def t_timetable(request, teacher_id):
     asst = AssignTime.objects.raw("SELECT * FROM info_assigntime WHERE EXISTS (SELECT * FROM info_assign WHERE info_assign.id = assign_id AND teacher_id = %s)", [teacher_id])
-    
+
     class_matrix = [[True for i in range(12)] for j in range(5)]
     for i, d in enumerate(DAYS_OF_WEEK):
         t = 0
@@ -409,7 +424,3 @@ def sqlexec(squery, var=[]):
         cursor.execute(squery)
     else:
         cursor.execute(squery, var)
-
-
-
-

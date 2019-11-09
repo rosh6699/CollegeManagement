@@ -24,6 +24,7 @@ urlpatterns = [
     path('teacher/<int:assign_id>/Students/attendance/', views.t_student, name='t_student'),
     path('teacher/<int:assign_id>/ClassDates/', views.t_class_date, name='t_class_date'),
     path('teacher/<int:ass_c_id>/Cancel/', views.cancel_class, name='cancel_class'),
+    path('teacher/<int:ass_c_id>/undo_cancel/', views.undo_cancel, name='undo_cancel'),
     path('teacher/<int:ass_c_id>/attendance/', views.t_attendance, name='t_attendance'),
     path('teacher/<int:ass_c_id>/Edit_att/', views.edit_att, name='edit_att'),
     path('teacher/<int:ass_c_id>/attendance/confirm/', views.confirm, name='confirm'),
