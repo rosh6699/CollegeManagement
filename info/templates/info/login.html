@@ -36,16 +36,39 @@
 
           <div class="container-login100-form-btn">
 
-            {% comment %} <div class="wrap-input100">
+           <!-- <div class="wrap-input100">
 
               {{form.as_p}}
+							<div class="error">
+								<ul>
+									{% for key,value in form.errors.items %}
+									 {% for error in value %}
+									 	<li>{{error}}</li>
+										{% endfor %}
+									{% endfor %}
+								</ul>
+
+							</div>
               <p><label for="id_username">Username:</label> <input type="text" name="username" autofocus="" required="" id="id_username"></p>
               <p><label for="id_password">Password:</label> <input type="password" name="password" required="" id="id_password"></p>
 
 
-            </div> {% endcomment %}
+            </div>  -->
+
+						<div class="error" style="color : red">
+							<ul>
+								{% for key,value in form.errors.items %}
+								 {% for error in value %}
+									<li>{{error}}</li>
+									{% endfor %}
+								{% endfor %}
+							</ul>
+
+						</div>
 
             <div class="wrap-input100 validate-input" >
+
+
 
 						<input type="text" class="input100" name="username" autofocus required="" id="id_username">
 						<span class="focus-input100"></span>
@@ -90,7 +113,7 @@
 
 
   <!-- <script src="{% static '/info2/vendor/bootstrap/js/popper.js' %}"></script> -->
-	<!-- <script src="{% static '/info5/bootstrap/vendor/bootstrap/js/bootstrap.min.js' %}"></script> -->
+	<script src="{% static '/info5/bootstrap/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 
 
 </body>
