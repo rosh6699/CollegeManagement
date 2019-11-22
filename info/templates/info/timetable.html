@@ -34,7 +34,7 @@
                                     {% if forloop.counter == 1 %}
                                     <td><b>{{ j }}</b></td>
                                     {% else %}
-                                    <td>{{ j }}</td>
+                                    <td>{{ j.assign.course.shortname }}</td>
                                     {% endif %}
                                 {% endfor %}
                             </tr>

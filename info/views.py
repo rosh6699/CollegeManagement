@@ -276,7 +276,7 @@ def timetable(request, class_id):
                 #a = asst.get(period=time_slots[t][0], day=d[0])
                 for a in asst:
                     if a.period == time_slots[t][0] and a.day ==d[0]:
-                        matrix[i][j] = a.assign.course_id
+                        matrix[i][j] = a
                         break
                 #matrix[i][j] = a.assign.course_id
             except AssignTime.DoesNotExist:
